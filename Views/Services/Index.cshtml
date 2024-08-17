@@ -1,0 +1,18 @@
+﻿@using Demo.Repository;
+@inject IEmployeeRepository empRepo
+@inject IConfiguration config
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<h2>Id from Controller: @ViewBag.Id</h2>
+<h2>Id from View: @empRepo.Id</h2>
+
+
+<h2>Project Name:@config.GetSection("ProjectName").Value </h2>
+
+
+

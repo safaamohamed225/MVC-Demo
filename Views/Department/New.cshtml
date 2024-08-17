@@ -1,0 +1,32 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+
+<form method="post" action="/Department/SaveNew">
+    <div>
+        @* <label>Name</label> *@
+        @* <input name="Name" type="text" class="form-control" value="@Model.Name"/> *@
+
+        @* @Html.LabelFor(d=>d.Name) *@
+        @* @Html.TextBoxFor(s=>s.Name,new {placeholder="Enter your name" ,@class="form-control"}) *@
+
+        @* @Html.EditorFor(n => n.Name,new{htmlAttributes=new{@class="form-control"}}) *@
+
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name"/>
+    </div>
+    <div>
+        <label>Manager Name</label>
+        <input type="text" name="ManagerName" class="form-control" value="@Model.ManagerName"/>
+    </div>
+    <input type="submit" value="Save" class="btn btn-success"/>
+
+</form>
+
+<a href="/Department/Index">Back list</a>
+
+@Html.ActionLink("Back To List","Index","Department")
+

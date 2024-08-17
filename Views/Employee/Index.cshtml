@@ -1,0 +1,61 @@
+﻿@model List<Employee>
+@{
+    Layout = "_AdvancedLayout";
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<a asp-action="New" asp-controller="Employee">New</a>
+
+@* <div style="border:3px solid red" id="empDetails"></div> *@
+
+
+<div style="border:3px solid red" id="empDetails"></div>
+
+<table class="table table-bordered table-hover">
+
+    @foreach(var item in Model)
+
+    {
+        <tr>
+
+            <td><a href="#" onclick="GetData(@item.Id)"> @item.Name </a></td>
+            @* <td><div style="border:3px solid red" id="empDetails"></div></td> *@
+
+
+       @*      <td><partial name="_EmployeeCardPartial" model="item"></partial></td> *@
+            <td><a href="/Employee/Edit/@item.Id">Edit</a></td>
+            <td><a href="/Employee/Details/@item.Id">Details</a></td>
+
+        </tr>
+    }
+
+   
+    </table>
+
+
+@section Scripts {
+
+    <script src="~/lib/jquery/dist/jquery.min.js">
+
+
+    </script>
+
+    <script>
+
+        function GetData(empId) {
+            console.log(empId)
+            event.preventDefault();
+
+            $.ajax({
+                url: "/Employee/DetailsUdingPartial/" + empId,
+                success: function (result) {
+                    // $("#div1").html(result);
+                    // console.log(empId)
+                    document.getElementById("empDetails").innerHTML = result;
+                }
+            });
+        }
+    </script>
+}

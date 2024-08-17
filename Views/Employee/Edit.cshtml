@@ -1,0 +1,63 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+
+<form method="post" action="/Employee/SaveEdit/@Model.Id">
+
+    <div>
+        <label>Name</label>
+        <input name="Name" type="text" id="Name" value="@Model.Name" class="form form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Address</label>
+        <input name="Address" type="text" id="Address" value="@Model.Address" class="form form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Salary</label>
+        <input name="Salary" type="number" id="Salary" value="@Model.Salary" class="form form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Image</label>
+        <input name="Image" type="text" id="Image" value="@Model.Image" class="form form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Dept_Id</label>
+        @* <input name="Dept_Id" type="number" id="Dept_Id" value="@Model.Dept_Id" class="form form-control" /> *@
+
+        <select name="Dept_Id" id="Dept_Id" class="form form-control" value="0">
+            @foreach(Department deptItem in ViewBag.DeptList)
+            {
+
+                if(Model.Dept_Id==deptItem.Id)
+                {
+                         <option value="@deptItem.Id" selected>
+                        Select Department
+                             
+                    </option>
+                }
+                else
+                {
+                    <option value="@deptItem.Id">
+                        @deptItem.Name
+                    </option>
+                }
+            }
+        </select>
+        <span asp-validation-for="Dept_Id" class="text-danger"></span>
+    </div>
+    <input type="Submit" value="Save"/>
+
+</form>
+

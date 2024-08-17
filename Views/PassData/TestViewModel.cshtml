@@ -1,0 +1,30 @@
+﻿@model EmployeeWithMessageAndBranchListViewModel
+@{
+    ViewData["Title"] = "TestViewModel";
+}
+
+<h1>TestViewModel</h1>
+
+
+<h1 style="background-color:@Model.Color">@Model.Message</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Temp</th>
+    </tr>
+
+    <tr>
+        <td>@Model.EmpID</td> 
+        <td>@Model.EmpName</td>
+        <td><select>@foreach (var item in Model.Branches) { <option>@item</option> }</select></td>
+        <td>@Model.Temp</td>
+    </tr>
+    
+
+</table>
+@* 
+@Context.Session.GetString("name"); *@

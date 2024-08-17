@@ -1,0 +1,34 @@
+﻿
+@model Employee
+
+@{
+    ViewData["Title"] = "TestViewData";
+}
+
+<h1>TestViewData</h1>
+
+@* 
+<h4>@Model.Name</h4> *@
+
+ <h2 style="background-color:@ViewData["color"]">Message: @ViewData["message"]</h2>
+
+<select class="form-control" style="background-color:azure">
+
+    @foreach (var item in (List<string>)ViewData["Branches"])
+    {
+        <option>@item</option>
+    }
+
+</select>
+
+<select class="form-control" style="color:aquamarine">
+
+@foreach (var item in ViewBag.Branches)
+{
+    <option>@item</option>
+}
+
+</select>
+
+
+<h4>Temparature: @ViewData["temp"]</h4>  

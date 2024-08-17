@@ -1,0 +1,66 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "New";
+    SelectList DeptList = new SelectList(ViewBag.DropDownList, "Id", "Name");
+    // SelectList addressList = new SelectList(ViewBag.DropDownAddress,"Name");
+}
+
+<h1>New</h1>
+
+<form asp-action="SaveNew" asp-controller="Employee">
+    
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Address"></label>
+        <input  class="form-control" asp-for="Address"/>
+       @*  <select class="form-control" asp-for="Address" asp-items="addressList"></select> *@
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Image"></label>
+        <input class="form-control" asp-for="Image"/>
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Salary"></label>
+        <input class="form-control" asp-for="Salary"/>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Dept_Id"></label>
+        @* <input class="form-control" asp-for="Dept_Id" /> *@
+        <select class="form-control" asp-for="Dept_Id" asp-items="DeptList" value="0">
+
+            <option  selected>
+                Select Department
+
+            </option>
+        </select>
+     
+        <span asp-validation-for="Dept_Id" class="text-danger"></span>
+    </div>
+
+  <input type="submit" value="Add" class="btn btn-outline-success"/>
+
+</form>
+
+
+@* <script src="~/lib/jquery/dist/jquery.js" ></script> *@
+@* <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> *@
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial.cshtml"></partial>
+}
+
+
